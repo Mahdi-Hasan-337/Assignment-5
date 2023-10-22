@@ -1,7 +1,7 @@
 // Toggole Password
-function passowrdToggole(inputId) {
+function passwordToggle(inputId) {
     const passwordInput = document.getElementById(inputId);
-    const passwordToggleIcon = document.querySelector(`[onclick="passowrdToggole('${inputId}')"]`);
+    const passwordToggleIcon = document.querySelector(`[onclick="passwordToggle('${inputId}')"]`);
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
         passwordToggleIcon.classList.remove('fa-eye-slash');
