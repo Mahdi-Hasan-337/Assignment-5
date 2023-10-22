@@ -11,7 +11,6 @@
           <a class="nav-link active" aria-current="page" href="index.php">HOME</a>
         </li>
         <li class="nav-item">
-        <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="dashboard.php">DASHBOARD</a>
         </li>
         <li class="nav-item">

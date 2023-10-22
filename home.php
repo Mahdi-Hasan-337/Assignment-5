@@ -75,4 +75,3 @@ if (!empty($_POST["remember"])) {
 <script src="./assets/js/nav.js"></script>
 
 <?php include('./includes/footer.php'); ?>
-

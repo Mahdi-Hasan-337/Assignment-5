@@ -66,7 +66,7 @@
 <?php include('./includes/header.php'); ?>
 <?php include('./includes/nav.php'); ?>
 
-<form class="center col-4" action="signup_action.php" method="post">
+<form class="center col-4" action="signup.php" method="post">
     <h2>Register</h2>
     <div class="input-box">
         <input type="text" id="username" placeholder="Enter username" class="form-control" name="r_username" required>
@@ -79,17 +79,20 @@
     <div class="input-box">
         <input type="password" placeholder="Enter Password" id="r_password" class="form-control" name="r_pass" required>
         <i class="fa-solid fa-lock password"></i>
-        <i class="toggle-password fa-solid fa-eye-slash pwd_hide" onclick="passwordToggle('password')" style="color:#707070; font-size: 0.9rem;"></i>
+        <!-- Updated the onclick attribute to use 'r_password' as the inputId -->
+        <i class="toggle-password fa-solid fa-eye-slash pwd_hide" onclick="passwordToggle('r_password')" style="color:#707070; font-size: 0.9rem;"></i>
     </div>
+
     <div class="input-box">
         <input type="password" placeholder="Re-type Password" id="con_password" class="form-control" name="r_con_pass" required>
         <i class="fa-solid fa-lock password"></i>
-        <i class="toggle-password fa-solid fa-eye-slash pwd_hide" onclick="passwordToggle('r_password')" style="color:#707070; font-size: 0.9rem;"></i>
+        <!-- Updated the onclick attribute to use 'con_password' as the inputId -->
+        <i class="toggle-password fa-solid fa-eye-slash pwd_hide" onclick="passwordToggle('con_password')" style="color:#707070; font-size: 0.9rem;"></i>
     </div>
     <button class="button" name="register_btn">Register</button>
     <div class="login-signup">
         Already have an account?
-        <a class="signup-txt" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal" style="cursor:pointer;">Signin</a>
+        <a class="signup-txt" href="./signin.php">Signin</a>
     </div>
 </form>
 

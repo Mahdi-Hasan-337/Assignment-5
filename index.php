@@ -1,22 +1,22 @@
-<?php include('./includes/indexitem/header.php'); ?>
-<?php include('./includes/indexitem/nav.php'); ?>
+<?php include('./includes/header.php'); ?>
+<?php include('./includes/nav.php'); ?>
 
 <!-- Error Alert -->
 <?php if(isset($_SESSION['status'])) { ?>
-    <!-- <div class="alert-container show">
+    <div class="alert-container show">
         <div class="alert alert-danger auto-hide">
             <h5 style="color:red"><?= $_SESSION['status'] ?></h5>
         </div>
-    </div> -->
+    </div>
 <?php unset($_SESSION['status']); } ?>
 
 <!-- Success Alert -->
 <?php if(isset($_SESSION['p_status'])) { ?>
-    <!-- <div class="alert-container show">
+    <div class="alert-container show">
         <div class="alert alert-success auto-hide">
             <h5 style="color:green"><?= $_SESSION['p_status'] ?></h5>
         </div>
-    </div> -->
+    </div>
 <?php unset($_SESSION['p_status']); } ?>
 
 <?php if(!isset($_SESSION['l_email'])){ ?>
