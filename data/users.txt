@@ -1,0 +1,4 @@
+admin, admin, admin@gmail.com, 12345
+manager, manager, manager@gmail.com, Mahdi12345!@#$%
+user, user, user@gmail.com, Mahdi12345!@#$%
+manager, user1, user1@gmail.com, Mahdi12345!@#$%

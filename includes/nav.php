@@ -1,4 +1,6 @@
 <!-- Navbar -->
+<?php  ?>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Assignment-5</a>
@@ -10,18 +12,34 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="index.php">HOME</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="dashboard.php">DASHBOARD</a>
-        </li>
-        <li class="nav-item">
-          <a class="login-btn nav-link text-center active" href="signin.php">LOGIN</a>
-        </li>
-        <li class="nav-item">
-          <a class="login-btn nav-link text-center active" href="signup.php">REGISTER</a>
-        </li>
-        <li class="nav-item">
-          <a class="login-btn nav-link text-center active" href="logoutModal" data-bs-toggle="modal" data-bs-target="#logoutModal" role="button">LOGOUT</a>
-        </li>
+        
+        <?php if (isset($_SESSION["role"]) && $_SESSION["role"] == "admin") {
+        echo "
+            <li class='nav-item'>
+            <a class='nav-link active' aria-current='page' href='dashboard.php'>DASHBOARD</a>
+            </li>
+        ";
+        }?>
+
+        <?php 
+        
+        if (!isset($_SESSION["email"])) {
+        echo "
+            <li class='nav-item'>
+                <a class='login-btn nav-link text-center active' href='signin.php'>LOGIN</a>
+            </li>
+            <li class='nav-item'>
+                <a class='login-btn nav-link text-center active' href='signup.php'>REGISTER</a>
+            </li>
+        ";
+        } else {
+        echo "
+            <li class='nav-item'>
+                <a class='login-btn nav-link text-center active' href='logoutModal' data-bs-toggle='modal' data-bs-target='#logoutModal' role='button'>LOGOUT</a>
+            </li>
+        ";
+        } 
+        ?>   
       </ul>
     </div>
   </div>
@@ -34,7 +52,7 @@
       <div class="modal-body" style="padding:2rem;">
         <h2>Are you sure to logout?</h2>
         <div class="d-flex justify-content-center mt-5">
-          <a href="includes/action/logoutAction.php" class="col-lg-4 btn btn-primary">Logout</a>
+          <a href="signout.php" class="col-lg-4 btn btn-primary">Logout</a>
           <span><pre>   </pre></span>
           <button type="button" class="col-lg-4 btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>

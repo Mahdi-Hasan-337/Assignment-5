@@ -1,36 +1,19 @@
-<?php include('./includes/header.php'); ?>
-<?php include('./includes/nav.php'); ?>
+<?php
+session_start();
 
-<!-- Error Alert -->
-<?php if(isset($_SESSION['status'])) { ?>
-    <div class="alert-container show">
-        <div class="alert alert-danger auto-hide">
-            <h5 style="color:red"><?= $_SESSION['status'] ?></h5>
-        </div>
-    </div>
-<?php unset($_SESSION['status']); } ?>
+$role = $_SESSION["role"] ?? "";
+$username = $_SESSION["username"] ?? "";
+?>
 
-<!-- Success Alert -->
-<?php if(isset($_SESSION['p_status'])) { ?>
-    <div class="alert-container show">
-        <div class="alert alert-success auto-hide">
-            <h5 style="color:green"><?= $_SESSION['p_status'] ?></h5>
-        </div>
-    </div>
-<?php unset($_SESSION['p_status']); } ?>
+<?php include_once 'includes/header.php';
+include_once 'includes/nav.php';?>
 
-<?php if(!isset($_SESSION['l_email'])){ ?>
-    <div class='container-fluid'>
-        <div class='center'>
-            <h1>This is home page</h1>
-        </div>
-    </div>
-<?php } else { ?>
-    <div class='container-fluid'>
-        <div class='center'>
-            <h1>Welcome <?php $_SESSION['username'] ?></h1>
-        </div>
-    </div>
-<?php } ?>
+<link rel="stylesheet" href="./assets/css/index.css">
 
-<?php include('./includes/footer.php'); ?>
+<div class="container">
+  <div class="center">
+    <h1>Welcome <?php echo $username ?> to our website</h1>
+  </div>
+</div>
+
+<?php include_once 'includes/footer.php';?>

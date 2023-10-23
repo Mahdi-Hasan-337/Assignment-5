@@ -1,4 +1,3 @@
-// Toggole Password
 function passwordToggle(inputId) {
     const passwordInput = document.getElementById(inputId);
     const passwordToggleIcon = document.querySelector(`[onclick="passwordToggle('${inputId}')"]`);
