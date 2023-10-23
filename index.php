@@ -12,7 +12,8 @@ include_once 'includes/nav.php';?>
 
 <div class="container">
   <div class="center">
-    <h1>Welcome <?php echo $username ?> to our website</h1>
+    <!-- <h1>Welcome <?php //echo $username ?> to our website</h1> -->
+    <h1>Assignment-5 : Crew Project</h1>
   </div>
 </div>
 
