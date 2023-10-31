@@ -1,7 +1,13 @@
 <?php
-// session_start();
+session_start();
 
-include_once './read.php';
+if (!isset($_SESSION["email"]) || $_SESSION["role"] !== "admin") {
+    header("Location: index.php");
+}
+
+$usersFile = 'data/users.json';
+$users = file_exists($usersFile) ? json_decode(file_get_contents($usersFile), true) : [];
+
 include_once './includes/header.php';
 include_once './includes/nav.php';
 ?>
