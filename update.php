@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+if (!isset($_SESSION["email"]) || $_SESSION["role"] !== "admin") {
+    header("Location: signin.php");
+    exit;
+}
+
+
 $usersFile = 'data/users.json';
 
 if (isset($_POST['update_btn'])) {

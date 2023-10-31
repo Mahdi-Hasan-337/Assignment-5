@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if (!isset($_SESSION["email"]) || $_SESSION["role"] !== "admin") {
+    header("Location: signin.php");
+    exit;
+}
+
 $usersFile = json_decode(file_get_contents('data/users.json'), true);
 
 if (isset($_GET["email"])) {
