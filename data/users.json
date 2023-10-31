@@ -1,1 +1,20 @@
-{"admin@gmail.com":{"username":"admin","password":"123","role":"admin"},"user2@gmail.com":{"username":"user2","password":"123","role":"admin"}}
+{
+    "admin@gmail.com":
+    {
+        "username":"admin",
+        "password":"123",
+        "role":"admin"
+    },
+    "user1@gmail.com":
+    {
+        "username":"user1",
+        "password":"Mahdi12!@",
+        "role":"user"
+    },
+    "user2@gmail.com":
+    {
+        "username":"user2",
+        "password":"123",
+        "role":"user"
+    }
+}
