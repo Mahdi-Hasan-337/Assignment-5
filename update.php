@@ -1,28 +1,25 @@
 <?php
+session_start();
 
-if (isset($_POST["update_btn"])) {
-    $role = $_POST["role"];
-    $username = $_POST["username"];
-    $email = $_POST["email"];
+$usersFile = 'data/users.json';
 
-    $data = file_get_contents('./data/users.txt');
-    $lines = explode("\n", $data);
+if (isset($_POST['update_btn'])) {
+    $email = $_POST['email'];
+    $newRole = $_POST['role'];
 
-    $newData = array();
+    $users = file_exists($usersFile) ? json_decode(file_get_contents($usersFile), true) : [];
 
-    foreach ($lines as $line) {
-        $userData = explode(", ", $line);
-        if (count($userData) === 4 && $userData[2] !== $email) {
-            $newData[] = $line;
-        } else {
-            $newData[] = "$role, $username, $email, $userData[3]";
-        }
+    if (isset($users[$email])) {
+        $users[$email]['role'] = $newRole;
+
+        file_put_contents($usersFile, json_encode($users, JSON_PRETTY_PRINT));
+
+        header('Location: dashboard.php');
     }
+}
 
-    file_put_contents('./data/users.txt', implode("\n", $newData));
-
-    header("Location: dashboard.php");
-} else {
-    header("Location: dashboard.php");
+if (isset($_GET['email'])) {
+    $email = $_GET['email'];
+    $user = $users[$email];
 }
 ?>

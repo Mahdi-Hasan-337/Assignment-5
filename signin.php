@@ -1,55 +1,5 @@
-<?php
-session_start();
-
-if (isset($_SESSION["email"])) {
-    header("Location: index.php");
-}
-
-$email = $_POST["email"] ?? "";
-$password = $_POST["password"] ?? "";
-
-$error_message = "";
-
-$fp = fopen("./data/users.txt", "r");
-
-$roles = array();
-$usernames = array();
-$emails = array();
-$passwords = array();
-
-while ($line = fgets($fp)) {
-    $values = explode(",", $line); // role, username, email, password
-
-    array_push($roles, trim($values[0])); // role
-    array_push($usernames, trim($values[1])); /// username
-    array_push($emails, trim($values[2])); /// email
-    array_push($passwords, trim($values[3])); /// password
-}
-
-fclose($fp);
-
-for ($i = 0; $i < count($roles); $i++) {
-    if ($email == $emails[$i] && $password == $passwords[$i]) {
-        $_SESSION["role"] = $roles[$i];
-        $_SESSION["username"] = $usernames[$i];
-        $_SESSION["email"] = $emails[$i];
-        header("Location: index.php");
-    } else {
-        $errorMessage = "Wrong email or password";
-    }
-}
-
-if (!empty($_POST["remember"])) {
-    setcookie("email", $_POST["email"], time() + 3600);
-    setcookie("password", $_POST["password"], time() + 3600);
-} else {
-    setcookie("email", "");
-    setcookie("password", "");
-}
-
-?>
-
 <?php include_once 'includes/header.php';?>
+<?php include_once './read.php';?>
 <?php include_once 'includes/nav.php';?>
     <link rel="stylesheet" href="./assets/css/log_reg_modal.css">
 

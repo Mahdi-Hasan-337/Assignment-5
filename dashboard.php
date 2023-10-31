@@ -1,14 +1,7 @@
 <?php
-session_start();
-
-if (!isset($_SESSION["email"]) || $_SESSION["role"] !== "admin") {
-    header("Location: signin.php");
-    exit;
-}
+// session_start();
 
 include_once './read.php';
-//include_once './delete.php';
-
 include_once './includes/header.php';
 include_once './includes/nav.php';
 ?>
@@ -72,24 +65,31 @@ include_once './includes/nav.php';
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($userData as $user) {?>
-                            <tr>
-                                <td><?php echo $user[0]; ?></td>
-                                <td><?php echo $user[1]; ?></td>
-                                <td><?php echo $user[2]; ?></td>
-                                <td>
-                                    <?php if ($user[0] !== 'admin') {?>
-                                        <a class='col-6 btn btn-danger' href='./delete.php?id=<?php echo $user[2]; ?>'>DELETE</a>
-
-                                    <?php }?>
-                                </td>
-                                <td>
-                                <?php if ($user[0] !== 'admin') {?>
-                                        <a class='col-6 btn btn-warning' data-bs-toggle="modal" href="#updatemodal" role="button">UPDATE</a>
-                                    <?php }?>
-                                </td>
-                            </tr>
-                            <?php }?>
+                            <?php foreach ($users as $email => $user) { ?>
+                                <tr>
+                                    <td><?php echo $user['role']; ?></td>
+                                    <td><?php echo $user['username']; ?></td>
+                                    <td><?php echo $email; ?></td>
+                                    <td>
+                                        <?php if ($user['role'] != 'admin') { ?>
+                                            <form action="./update.php" method="post" class="d-flex align-items-center" style="margin: 0; padding: 0;">
+                                                <select id="role" class="form-control" name="role">
+                                                    <option value="manager" <?php if ($user['role'] === 'manager') echo 'selected'; ?>>MANAGER</option>
+                                                    <option value="admin" <?php if ($user['role'] === 'admin') echo 'selected'; ?>>ADMIN</option>
+                                                    <option value="user" <?php if ($user['role'] === 'user') echo 'selected'; ?>>USER</option>
+                                                </select>
+                                                <input type="hidden" id="email" class="form-control" name="email" value="<?php echo $email; ?>">
+                                                <button class="btn btn-warning" name="update_btn">UPDATE</button>
+                                            </form>
+                                        <?php } ?>
+                                    </td>
+                                    <td>
+                                        <?php if($user['role'] != 'admin') { ?>
+                                            <a href="./delete.php?email=<?php echo $email; ?>" class="btn btn-danger">DELETE</a>
+                                        <?php } ?>
+                                    </td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

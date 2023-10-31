@@ -1,6 +1,4 @@
 <!-- Navbar -->
-<?php  ?>
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Assignment-5</a>
@@ -23,19 +21,19 @@
 
         <?php 
         
-        if (!isset($_SESSION["email"])) {
+        if (isset($_SESSION["email"])) {
         echo "
             <li class='nav-item'>
-                <a class='login-btn nav-link text-center active' href='signin.php'>LOGIN</a>
-            </li>
-            <li class='nav-item'>
-                <a class='login-btn nav-link text-center active' href='signup.php'>REGISTER</a>
+              <a class='login-btn nav-link text-center active' href='signout.php'>LOGOUT</a>
             </li>
         ";
         } else {
         echo "
             <li class='nav-item'>
-                <a class='login-btn nav-link text-center active' href='logoutModal' data-bs-toggle='modal' data-bs-target='#logoutModal' role='button'>LOGOUT</a>
+              <a class='login-btn nav-link text-center active' href='signin.php'>LOGIN</a>
+            </li>
+            <li class='nav-item'>
+              <a class='login-btn nav-link text-center active' href='signup.php'>REGISTER</a>
             </li>
         ";
         } 
